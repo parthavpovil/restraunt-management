@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-var Menu struct{
+type Menu struct{
 	ID		primitive.ObjectID		`bson:"_id"`
 	Name		string			`json:"name" validate:"required"`
 	Category		string		`json:"category" validate:"required"`

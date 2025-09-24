@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-var Tabl struct {
+type Table struct {
 	ID               primitive.ObjectID `bson:"_id"`
 	Number_of_guests *int               `json:"number_of_guests" validate:"required"`
 	Table_number     *int               `json:"table_number" validate:"required"`

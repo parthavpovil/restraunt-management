@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-var Order struct{
+type Order struct{
 	ID		primitive.ObjectID		`bson:"_id"`
 	Order_date		time.Time		`json:"order_date" validate:"required"`
 	Created_at		time.Time		`json:"created_at"`
