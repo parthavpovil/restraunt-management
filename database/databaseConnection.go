@@ -19,11 +19,11 @@ func DBInstance() *mongo.Client {
 	if err != nil {
 		log.Fatal(err)
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	c, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 
 	defer cancel()
 
-	err = client.Connect(ctx)
+	err = client.Connect(c)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -35,7 +35,7 @@ func DBInstance() *mongo.Client {
 
 var Client *mongo.Client
 
-func OpenCollection(client *mongo.Client, collectionName string) *mongo.Collection{
-	var collection *mongo.Collection =client.Database("restraunt").Collection(collectionName)
+func OpenCollection(client *mongo.Client, collectionName string) *mongo.Collection {
+	var collection *mongo.Collection = client.Database("restraunt").Collection(collectionName)
 	return collection
 }
