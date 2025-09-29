@@ -15,7 +15,6 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 var orderCollection *mongo.Collection =database.OpenCollection(database.Client,"order")
-var tableCollection *mongo.Collection=database.OpenCollection(database.Client,"table")
 
 func GetOrders() gin.HandlerFunc {
 	return func(c *gin.Context) {

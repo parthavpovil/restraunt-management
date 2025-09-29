@@ -5,10 +5,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/parthav/restraunt-management/database"
-	//"github.com/parthav/restraunt-management/middleware"
+	"github.com/parthav/restraunt-management/middleware"
 	"github.com/parthav/restraunt-management/routes"
 	"go.mongodb.org/mongo-driver/mongo"
     "go.mongodb.org/mongo-driver/mongo/options"
+
 
 	
 )
