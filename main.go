@@ -8,7 +8,7 @@ import (
 	"github.com/parthav/restraunt-management/middleware"
 	"github.com/parthav/restraunt-management/routes"
 	"go.mongodb.org/mongo-driver/mongo"
-    "go.mongodb.org/mongo-driver/mongo/options"
+    //"go.mongodb.org/mongo-driver/mongo/options"
 
 
 	
