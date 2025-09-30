@@ -14,7 +14,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
-var orderCollection *mongo.Collection =database.OpenCollection(database.Client,"order")
+var orderCollection *mongo.Collection =database.OpenCollection(database.Client,"orders")
 
 func GetOrders() gin.HandlerFunc {
 	return func(c *gin.Context) {
@@ -86,7 +86,7 @@ func CreateOrder() gin.HandlerFunc {
 		}
 
 		if order.Table_id !=nil{
-			tableCollection.FindOne(ctx,bson.M{"table_id":order.Table_id}).Decode(&table)
+			err :=tableCollection.FindOne(ctx,bson.M{"table_id":order.Table_id}).Decode(&table)
 			if err !=nil{
 				c.JSON(http.StatusInternalServerError,gin.H{
 					"error":"table was not found",
@@ -132,7 +132,7 @@ func UpdateOrder() gin.HandlerFunc {
 			return 
 		}
 		if order.Table_id !=nil{
-			err :=menuCollection.FindOne(ctx,bson.M{"table_id":order.Table_id}).Decode(&table)
+			err :=tableCollection.FindOne(ctx,bson.M{"table_id":order.Table_id}).Decode(&table)
 
 			if err!=nil{
 				c.JSON(http.StatusInternalServerError,gin.H{

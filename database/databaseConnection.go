@@ -11,7 +11,7 @@ import (
 )
 
 func DBInstance() *mongo.Client {
-	MongoDB := "mongodb://mongo:27017"
+    MongoDB := "mongodb://admin:password123@localhost:27017/restraunt?authSource=admin"
 	fmt.Println(MongoDB)
 
 	client, err := mongo.NewClient(options.Client().ApplyURI(MongoDB))
@@ -33,7 +33,7 @@ func DBInstance() *mongo.Client {
 	return client
 }
 
-var Client *mongo.Client
+var Client *mongo.Client =DBInstance()
 
 func OpenCollection(client *mongo.Client, collectionName string) *mongo.Collection {
 	var collection *mongo.Collection = client.Database("restraunt").Collection(collectionName)

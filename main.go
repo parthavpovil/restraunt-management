@@ -4,17 +4,14 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/parthav/restraunt-management/database"
 	"github.com/parthav/restraunt-management/middleware"
 	"github.com/parthav/restraunt-management/routes"
-	"go.mongodb.org/mongo-driver/mongo"
-    //"go.mongodb.org/mongo-driver/mongo/options"
 
 
 	
 )
 
-var foodcollection *mongo.Collection = database.OpenCollection(database.Client,"food")
+
 
 func main() {
 	port := os.Getenv("PORT")
@@ -34,6 +31,7 @@ func main() {
 	routes.MenuRoutes(router)
 	routes.InvoiceRoutes(router)
 	routes.FoodRoutes(router)
+	routes.OrderItemRoutes(router)
 
 
 	router.Run(":"+port)

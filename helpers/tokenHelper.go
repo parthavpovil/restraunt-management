@@ -2,6 +2,7 @@ package helpers
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -26,7 +27,7 @@ var userCollection *mongo.Collection = database.OpenCollection(database.Client, 
 
 var SECRET_KEY = os.Getenv("SECRET_KEY")
 
-func GenerateAllTokens(email string, firstname string, lastname string, uid string) (signedTOken string, signedRefreshTokenrefreshToken string, err error) {
+func GenerateAllTokens(email string, firstname string, lastname string, uid string) (signedTOken string, signedRefreshToken string, err error) {
 	claims := &SignedDetails{
 		Email:      email,
 		First_name: firstname,
@@ -83,5 +84,27 @@ func UpdateAllTokens(signedToken string,signedRefreshToken string, userId string
 }
 
 func ValidateToken(signedToken string)(claims *SignedDetails, msg string) {
-	jwt.ParseWithClaims()
+	token,err :=jwt.ParseWithClaims(
+		signedToken,
+		&SignedDetails{},
+		func(t *jwt.Token) (interface{}, error) {
+			return []byte(SECRET_KEY),nil
+		},
+	)
+
+	claims,ok :=token.Claims.(*SignedDetails)
+	if !ok {
+		msg =fmt.Sprintf("toke is invalid")
+		msg=err.Error()
+		return
+	}
+
+	if claims.ExpiresAt.Time.Before(time.Now()){
+		msg=fmt.Sprint("toke is expired")
+		msg=err.Error()
+		return
+	}
+
+	return claims,msg
+
 }

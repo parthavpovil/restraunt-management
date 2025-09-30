@@ -18,7 +18,7 @@ import (
 	
 	"go.mongodb.org/mongo-driver/mongo"
 )
-var userCollection *mongo.Collection = database.OpenCollection(database.Client,"user")
+var userCollection *mongo.Collection = database.OpenCollection(database.Client,"users")
 func GetUsers() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var ctx, cancel = context.WithTimeout(context.Background(),100*time.Second)
@@ -186,8 +186,11 @@ func Login() gin.HandlerFunc {
 		 }
 
 		 token,refreshToken, _ :=helpers.GenerateAllTokens(*foundUser.Email,*foundUser.First_name,*foundUser.Last_name,foundUser.User_id)
+
 		 
 		 helpers.UpdateAllTokens(token,refreshToken,foundUser.User_id)
+		 foundUser.Token=&token
+		 foundUser.Refresh_token=&refreshToken
 		 c.JSON(http.StatusOK,foundUser)
 
 

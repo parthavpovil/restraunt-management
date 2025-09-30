@@ -1,0 +1,970 @@
+{
+	"info": {
+		"_postman_id": "e671be61-6fa3-4c4a-a998-25bbfa18369e",
+		"name": "Restraunt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46028416",
+		"_collection_link": "https://parkar-1071016.postman.co/workspace/local-api~cba269b2-55f3-42e9-887f-b0060ed8576b/collection/46028416-e671be61-6fa3-4c4a-a998-25bbfa18369e?action=share&source=collection_link&creator=46028416"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"phone\": \"1234567890\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/users?recordPerPage=10&page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "recordPerPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/users/:user_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "menu",
+			"item": [
+				{
+					"name": "create menu",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Main Menu\",\n  \"category\": \"Dinner\",\n  \"start_date\": \"2023-01-01T00:00:00Z\",\n  \"end_date\": \"2023-12-31T23:59:59Z\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/menus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"menus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all menus",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/menus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"menus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single menu",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/menus/:menu_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"menus",
+								":menu_id"
+							],
+							"variable": [
+								{
+									"key": "menu_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update menu",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Evening Menu\",\n  \"category\": \"Dinner Special\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/menus/:menu_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"menus",
+								":menu_id"
+							],
+							"variable": [
+								{
+									"key": "menu_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "food",
+			"item": [
+				{
+					"name": "create food",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pizza Margherita\",\n  \"price\": 15.99,\n  \"food_image\": \"https://example.com/pizza.jpg\",\n  \"menu_id\": \"MENU_ID_HERE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/foods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"foods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all foods",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/foods?recordPerPage=10&page=1&startIndex=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"foods"
+							],
+							"query": [
+								{
+									"key": "recordPerPage",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "startIndex",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single food",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/foods/:food_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"foods",
+								":food_id"
+							],
+							"variable": [
+								{
+									"key": "food_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update food",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Deluxe Pizza Margherita\",\n  \"price\": 22.99\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/foods/:food_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"foods",
+								":food_id"
+							],
+							"variable": [
+								{
+									"key": "food_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "table",
+			"item": [
+				{
+					"name": "add table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"number_of_guests\": 4,\n  \"table_number\": 5\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/table",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"table"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all tables",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/tables",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single table",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/tables/:table_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"tables",
+								":table_id"
+							],
+							"variable": [
+								{
+									"key": "table_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update table",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"number_of_guests\": 8,\n  \"table_number\": 15\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/table/:table_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"table",
+								":table_id"
+							],
+							"variable": [
+								{
+									"key": "table_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "create order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order_date\": \"2023-10-30T12:00:00Z\",\n  \"table_id\": \"TABLE_ID_HERE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/orders/:order_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"orders",
+								":order_id"
+							],
+							"variable": [
+								{
+									"key": "order_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update order",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order_date\": \"2023-10-30T18:00:00Z\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/order/:order_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"order",
+								":order_id"
+							],
+							"variable": [
+								{
+									"key": "order_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order Item",
+			"item": [
+				{
+					"name": "add order item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"table_id\": \"TABLE_ID_HERE\",\n  \"order_items\": [\n    {\n      \"quantity\": \"M\",\n      \"unit_price\": 15.99,\n      \"food_id\": \"FOOD_ID_HERE\"\n    },\n    {\n      \"quantity\": \"L\",\n      \"unit_price\": 18.99,\n      \"food_id\": \"FOOD_ID_HERE\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/orderItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"orderItems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all order items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/orderItems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"orderItems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single order item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/orderItems/:orderItem_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"orderItems",
+								":orderItem_id"
+							],
+							"variable": [
+								{
+									"key": "orderItem_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Items by Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/orderItems-order/:order_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"orderItems-order",
+								":order_id"
+							],
+							"variable": [
+								{
+									"key": "order_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update order item",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quantity\": \"L\",\n  \"unit_price\": 20.99\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/orderItems/:orderItem_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"orderItems",
+								":orderItem_id"
+							],
+							"variable": [
+								{
+									"key": "orderItem_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "invoice",
+			"item": [
+				{
+					"name": "create invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"order_id\": \"ORDER_ID_HERE\",\n  \"payment_method\": \"CARD\",\n  \"payment_status\": \"PENDING\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/invoices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all invoices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/invoices",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single invoice",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/invoices/:invoice_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"invoices",
+								":invoice_id"
+							],
+							"variable": [
+								{
+									"key": "invoice_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update invoice",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "YOUR_TOKEN_HERE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"payment_status\": \"PAYED\",\n  \"payment_method\": \"CASH\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/invoices/:invoice_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"invoices",
+								":invoice_id"
+							],
+							"variable": [
+								{
+									"key": "invoice_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

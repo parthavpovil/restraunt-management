@@ -14,7 +14,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var tableCollection *mongo.Collection = database.OpenCollection(database.Client,"table")
+var tableCollection *mongo.Collection = database.OpenCollection(database.Client,"tables")
 
 func GetTables() gin.HandlerFunc {
 	return func(c *gin.Context) {

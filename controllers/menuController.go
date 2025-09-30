@@ -16,7 +16,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var menuCollection *mongo.Collection = database.OpenCollection(database.Client, "menu")
+var menuCollection *mongo.Collection = database.OpenCollection(database.Client, "menus")
 
 func GetMenus() gin.HandlerFunc {
 	return func(c *gin.Context) {

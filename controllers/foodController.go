@@ -19,7 +19,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "food")
+var foodCollection *mongo.Collection = database.OpenCollection(database.Client, "foods")
 
 var validate = validator.New()
 
@@ -113,7 +113,7 @@ func CreateFood() gin.HandlerFunc {
 			})
 			return
 		}
-		err = menuCollection.FindOne(ctx, bson.M{"menu-id": food.Menu_id}).Decode(&menu)
+		err = menuCollection.FindOne(ctx, bson.M{"menu_id": food.Menu_id}).Decode(&menu)
 		if err != nil {
 			msg := fmt.Sprintf("menu was not found")
 			c.JSON(http.StatusInternalServerError, gin.H{
